@@ -814,7 +814,7 @@ using System.Diagnostics.CodeAnalysis;
         public override int Read()
         {
             if (bPos &lt; sLen) return str[bPos++];
-            else if (bPos == sLen) { bPos++; return '\n'; }   // one strike, see new line
+            //else if (bPos == sLen) { bPos++; return '\n'; }   // one strike, see new line
             else { bPos++; return EndOfFile; }                // two strikes and you're out!
         }
 
