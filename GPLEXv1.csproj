@@ -3,7 +3,6 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <PlatformTarget>anycpu</PlatformTarget>
-    <TargetFrameworks>net20;net9.0</TargetFrameworks>
     <AssemblyName>gplex</AssemblyName>
     <RootNamespace>QUT.Gplex</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

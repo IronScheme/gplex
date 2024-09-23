@@ -1,7 +1,4 @@
 ﻿using System.IO;
-#if !NET20
-using System.Reflection;
-#endif
 
 namespace QUT.Gplex.IncludeResources
 {
@@ -34,11 +31,7 @@ namespace QUT.Gplex.IncludeResources
 
         static string GetResourceString(string resourceName)
         {
-#if NET20
             var assembly = typeof(Content).Assembly;
-#else
-            var assembly = typeof(Content).GetTypeInfo().Assembly;
-#endif
             using (var stream = assembly.GetManifestResourceStream("QUT.Gplex.SpecFiles." + resourceName))
             {
                 using (var reader = new StreamReader(stream))
