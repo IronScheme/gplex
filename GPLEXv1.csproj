@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="SpecFiles\LookaheadHelper.cs" />
     <EmbeddedResource Include="SpecFiles\GplexBuffers.txt" />
     <EmbeddedResource Include="SpecFiles\gplexx.frame" />
     <EmbeddedResource Include="SpecFiles\ResourceHeader.txt" />
   </ItemGroup>
 
-  <ItemGroup>
+<!--  <ItemGroup>
     <GplexFile Include="SpecFiles\gplex.lex">
       <OutputFile>Scanner.cs</OutputFile>
     </GplexFile>
@@ -26,5 +25,5 @@
   <ItemGroup>
     <PackageReference Include="Gplex.Tool" Version="0.0.1-preview1" PrivateAssets="All" />
     <PackageReference Include="Gppg.Tool" Version="0.0.1-preview1" PrivateAssets="All" />
-  </ItemGroup>
+  </ItemGroup>-->
 </Project>
