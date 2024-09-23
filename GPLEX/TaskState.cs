@@ -4,17 +4,14 @@
 
 using System;
 using System.IO;
-using System.Xml;
 using System.Reflection;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using QUT.Gplex.Parser;
 using QUT.GplexBuffers;
 
 namespace QUT.Gplex.Automaton
 {
-	internal enum OptionState { clear, needUsage, needCodepageHelp, inconsistent, alphabetLocked, errors};
+    internal enum OptionState { clear, needUsage, needCodepageHelp, inconsistent, alphabetLocked, errors};
 
     /// <summary>
     /// A singleton of this type holds the main program state during
@@ -200,7 +197,7 @@ namespace QUT.Gplex.Automaton
                     msgWrtr = Console.Error;
             }
             else if (arg.StartsWith("FRAME:", StringComparison.Ordinal))
-                userFrame = arg.Substring(6);
+                userFrame = option.Substring(6);
             else if (arg.Equals("HELP", StringComparison.Ordinal) || arg.Equals("?"))
                 return OptionState.needUsage;
             else if (arg.Equals("ERRORSTOCONSOLE", StringComparison.Ordinal))

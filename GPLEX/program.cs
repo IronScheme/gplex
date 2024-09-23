@@ -3,22 +3,20 @@
 // (see accompanying GPLEXcopyright.rtf)
 
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+using System.IO;
 using QUT.Gplex.Automaton;
 using QUT.Gplex.Parser;
 
 [assembly: CLSCompliant(true)]
 namespace QUT.Gplex
 {
-	static class Program
+    static class Program
 	{
 		const string prefix = "GPLEX: ";
 
 		static void Main(string[] args)
 		{
-            bool fileArg = false;
+            int fileArg = -1;
 			TaskState task = new TaskState();
             OptionState opResult = OptionState.clear;
 			if (args.Length == 0)
@@ -32,26 +30,35 @@ namespace QUT.Gplex
                     if (opResult != OptionState.clear &&
                         opResult != OptionState.needCodepageHelp &&
                         opResult != OptionState.needUsage)
-                        BadOption(arg, opResult);
+                    {
+                        if (File.Exists(arg))
+                        {
+                            fileArg = i;
+                        }
+                        else
+                        {
+                            BadOption(arg, opResult);
+                        }
+                    }
                 }
                 else if (i != args.Length - 1)
                     Usage("Too many arguments");
                 else
-                    fileArg = true;
+                    fileArg = i;
 			}
             if (task.Version)
                 task.Msg.WriteLine("GPLEX version: " + task.VerString);
             if (opResult == OptionState.needCodepageHelp)
-                CodepageHelp(fileArg);
+                CodepageHelp(fileArg >= 0);
             if (opResult == OptionState.errors)
                 Usage(null); // print usage and abort
-            else if (!fileArg)
+            else if (fileArg < 0)
                 Usage("No filename");
             else if (opResult == OptionState.needUsage)
                 Usage();     // print usage but do not abort
             try
             {
-                task.Process(args[args.Length - 1]);
+                task.Process(args[fileArg]);
             }
             catch (Exception ex)
             {

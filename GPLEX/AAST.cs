@@ -7,13 +7,12 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
-using QUT.Gplex;
 
-namespace QUT.Gplex.Parser {
+namespace QUT.Gplex.Parser
+{
     /// <summary>
     /// This class represents the Attributed Abstract Syntax Tree
     /// corresponding to an input LEX file.

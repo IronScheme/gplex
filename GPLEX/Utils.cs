@@ -8,7 +8,6 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
 using System.Globalization;
 
 namespace QUT.Gplex.Parser
