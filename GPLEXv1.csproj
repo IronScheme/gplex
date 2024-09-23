@@ -3,30 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <AssemblyName>gplex</AssemblyName>
-    <RootNamespace>QUT.Gplex</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-<!--
-  --><!-- Pack settings --><!--
-  <PropertyGroup>
-    <NoPackageAnalysis>true</NoPackageAnalysis>
-    <NuspecFile>MSBuild/Gplex.nuspec</NuspecFile>
-    <IntermediatePackDir>$(MSBuildProjectDirectory)/bin/$(Configuration)/publish/</IntermediatePackDir>
-    <PublishDir>$(IntermediatePackDir)$(TargetFramework)/</PublishDir>
-    <NuspecProperties>publishDir=$([MSBuild]::NormalizeDirectory($(IntermediatePackDir)))</NuspecProperties>
-  </PropertyGroup>
-
-  --><!-- Executes /t:Publish for all target frameworks before packing --><!--
-  <Target Name="NugetCrossTarget" AfterTargets="Build" Condition="'$(TargetFrameworks)' != ''">
-    <ItemGroup>
-      <_TargetFramework Include="$(TargetFrameworks)" />
-    </ItemGroup>
-    <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" Properties="TargetFramework=%(_TargetFramework.Identity)" />
-  </Target>
-
-  <Target Name="NugetSingleTarget" AfterTargets="Build" Condition="'$(TargetFrameworks)' == ''">
-    <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" />
-  </Target>-->
 
   <ItemGroup>
     <Compile Remove="SpecFiles\LookaheadHelper.cs" />
