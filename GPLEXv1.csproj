@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <PlatformTarget>anycpu</PlatformTarget>
     <AssemblyName>gplex</AssemblyName>
     <RootNamespace>QUT.Gplex</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
