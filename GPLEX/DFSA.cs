@@ -1264,7 +1264,7 @@ namespace QUT.Gplex.Automaton
                                     sWrtr.WriteLine("            SetSource(file, {0}); // unicode option", myTask.CodePage);
                                     sWrtr.WriteLine("        }");
                                     sWrtr.WriteLine();
-                                    sWrtr.WriteLine("        public {0}(Stream file, string codepage) {{", myTask.aast.scannerTypeName);
+                                    sWrtr.WriteLine("        public {0}(Stream file, string codepage) : this() {{", myTask.aast.scannerTypeName);
                                     sWrtr.WriteLine("            SetSource(file, CodePageHandling.GetCodePage(codepage));");
                                 }
                                 else

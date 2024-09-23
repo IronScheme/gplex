@@ -200,6 +200,7 @@ namespace QUT.Gplex.Parser {
             cats.Add( "IsFormatCharacter", new PredicateLeaf( PredicateLeaf.MkCharTest( CharCategory.IsFormat, CharCategory.IsFormat ) ) );
             cats.Add( "IdentifierStartCharacter", new PredicateLeaf( PredicateLeaf.MkCharTest( CharCategory.IsIdStart, CharCategory.IsIdStart ) ) );
             cats.Add( "IdentifierPartCharacter", new PredicateLeaf( PredicateLeaf.MkCharTest( CharCategory.IsIdPart, CharCategory.IsIdPart ) ) );
+            cats.Add("IsLetterOrUnicodeSchemeIdentifier", new PredicateLeaf(PredicateLeaf.MkCharTest(CharCategory.IsLetterOrUnicodeSchemeIdentifier, CharCategory.IsLetterOrUnicodeSchemeIdentifier)));
             // IdentifierPartCharacters actually include the Format category
             // as well, but are kept separate here so we may attach a different
             // semantic action to identifiers that require canonicalization by

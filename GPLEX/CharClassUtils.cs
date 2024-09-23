@@ -392,5 +392,72 @@ namespace QUT.Gplex
             UnicodeCategory theCat = Char.GetUnicodeCategory(str, index);
             return theCat == UnicodeCategory.Format;
         }
+
+        internal static bool IsLetterOrUnicodeSchemeIdentifier(char num)
+        {
+            if (num < 128)
+            {
+                return char.IsLetter(num);
+            }
+            switch (char.GetUnicodeCategory(num))
+            {
+                case UnicodeCategory.UppercaseLetter:
+                case UnicodeCategory.LowercaseLetter:
+                case UnicodeCategory.TitlecaseLetter:
+                case UnicodeCategory.ModifierLetter:
+                case UnicodeCategory.OtherLetter:
+                case UnicodeCategory.NonSpacingMark:
+                case UnicodeCategory.SpacingCombiningMark:
+                case UnicodeCategory.EnclosingMark:
+                case UnicodeCategory.DecimalDigitNumber:
+                case UnicodeCategory.LetterNumber:
+                case UnicodeCategory.OtherNumber:
+                case UnicodeCategory.DashPunctuation:
+                case UnicodeCategory.ConnectorPunctuation:
+                case UnicodeCategory.OtherPunctuation:
+                case UnicodeCategory.CurrencySymbol:
+                case UnicodeCategory.MathSymbol:
+                case UnicodeCategory.ModifierSymbol:
+                case UnicodeCategory.OtherSymbol:
+                case UnicodeCategory.PrivateUse:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        internal static bool IsLetterOrUnicodeSchemeIdentifier(string num, int index)
+        {
+            if (num[index] < 128)
+            {
+                return char.IsLetter(num[index]);
+            }
+
+            switch (char.GetUnicodeCategory(num, index))
+            {
+                case UnicodeCategory.UppercaseLetter:
+                case UnicodeCategory.LowercaseLetter:
+                case UnicodeCategory.TitlecaseLetter:
+                case UnicodeCategory.ModifierLetter:
+                case UnicodeCategory.OtherLetter:
+                case UnicodeCategory.NonSpacingMark:
+                case UnicodeCategory.SpacingCombiningMark:
+                case UnicodeCategory.EnclosingMark:
+                case UnicodeCategory.DecimalDigitNumber:
+                case UnicodeCategory.LetterNumber:
+                case UnicodeCategory.OtherNumber:
+                case UnicodeCategory.DashPunctuation:
+                case UnicodeCategory.ConnectorPunctuation:
+                case UnicodeCategory.OtherPunctuation:
+                case UnicodeCategory.CurrencySymbol:
+                case UnicodeCategory.MathSymbol:
+                case UnicodeCategory.ModifierSymbol:
+                case UnicodeCategory.OtherSymbol:
+                case UnicodeCategory.PrivateUse:
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }
