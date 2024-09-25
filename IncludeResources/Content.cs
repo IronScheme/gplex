@@ -32,7 +32,7 @@ namespace QUT.Gplex.IncludeResources
         static string GetResourceString(string resourceName)
         {
             var assembly = typeof(Content).Assembly;
-            using (var stream = assembly.GetManifestResourceStream("QUT.Gplex.SpecFiles." + resourceName))
+            using (var stream = assembly.GetManifestResourceStream("GPLEX.SpecFiles." + resourceName))
             {
                 using (var reader = new StreamReader(stream))
                 {
