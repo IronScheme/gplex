@@ -31,7 +31,7 @@ namespace QUT.Gplex
                         opResult != OptionState.needCodepageHelp &&
                         opResult != OptionState.needUsage)
                     {
-                        if (File.Exists(arg))
+                        if (File.Exists(args[i]))
                         {
                             fileArg = i;
                         }
