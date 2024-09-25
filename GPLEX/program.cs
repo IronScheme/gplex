@@ -34,6 +34,7 @@ namespace QUT.Gplex
                         if (File.Exists(args[i]))
                         {
                             fileArg = i;
+                            opResult = OptionState.clear;
                         }
                         else
                         {
