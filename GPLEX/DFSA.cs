@@ -1253,7 +1253,7 @@ namespace QUT.Gplex.Automaton
                             else if (selector == "embeddedBuffers")
                             {
                                 if (myTask.EmbedBuffers)
-                                    TaskState.EmbedBufferCode(sWrtr);
+                                    myTask.EmbedBufferCode(sWrtr);
                             }
                             else if (selector == "bufferCtor")
                             {

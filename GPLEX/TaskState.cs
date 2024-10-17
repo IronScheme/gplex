@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Globalization;
 using QUT.Gplex.Parser;
 using QUT.GplexBuffers;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace QUT.Gplex.Automaton
 {
@@ -484,6 +486,10 @@ namespace QUT.Gplex.Automaton
             StreamWriter writer = new StreamWriter(BufferCodeFile());
             GplexBuffers = QUT.Gplex.IncludeResources.Content.GplexBuffers;
 
+            var re = new Regex(@"public (\w+\s+)*(class|delegate)");
+
+            var buffers = re.Replace(GplexBuffers, m => m.Value.Replace("public", aast.visibility));
+
             writer.WriteLine(QUT.Gplex.IncludeResources.Content.ResourceHeader);
             writer.WriteLine("using System;");
             writer.WriteLine("using System.IO;");
@@ -496,22 +502,26 @@ namespace QUT.Gplex.Automaton
             writer.WriteLine("namespace QUT.GplexBuffers");
             writer.WriteLine('{');
             writer.WriteLine("// Code copied from GPLEX embedded resource");
-            writer.WriteLine(GplexBuffers);
+            writer.WriteLine(buffers);
             writer.WriteLine("// End of code copied from embedded resource");
             writer.WriteLine('}');
             writer.Flush();
             writer.Close();
         }
 
-        internal static void EmbedBufferCode(TextWriter writer)
+        internal void EmbedBufferCode(TextWriter writer)
         {
             string GplexBuffers = "";
             GplexBuffers = QUT.Gplex.IncludeResources.Content.GplexBuffers;
 
+            var re = new Regex(@"public (\w+\s+)*(class|delegate)");
+
+            var buffers = re.Replace(GplexBuffers, m => m.Value.Replace("public", aast.visibility));
+
             writer.WriteLine(QUT.Gplex.IncludeResources.Content.ResourceHeader);
 
             writer.WriteLine("// Code copied from GPLEX embedded resource");
-            writer.WriteLine(GplexBuffers);
+            writer.WriteLine(buffers);
             writer.WriteLine("// End of code copied from embedded resource");
             // writer.WriteLine('}');
             writer.Flush();
